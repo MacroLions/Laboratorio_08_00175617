@@ -38,9 +38,11 @@ formulario.addEventListener("submit",(evt)=>{
         descripcion: formulario[2].value,
         cantidad: formulario[3].value
     }
-    bitacoras.push(bitacora);
-    cont++;
-    mostrar();
+    if(bitacora.fecha!=""&&bitacora.fecha!=null&&bitacora.descripcion!=""&&bitacora.descripcion!=null&&bitacora.cantidad!=""&&bitacora.cantidad!=null){
+        bitacoras.push(bitacora);
+        cont++;
+        mostrar();
+    }
 });
 
 const crearElemento =(bitacora,tbody)=>{
@@ -60,6 +62,7 @@ const eliminar=(tbody)=>{
         tbody.removeChild(tbody.firstChild);
     }
 }
+
 
 const agregar=()=>{
     var eventtr = document.querySelectorAll(".click");
@@ -81,3 +84,34 @@ const mostrar=()=>{
     });
     agregar();
 }
+
+
+var cajaFecha = document.getElementById("fecha");
+cajaFecha.oninput = () => {
+    var valor = cajaFecha.value;
+    if(valor == "" || valor == null){
+        cajaFecha.style.borderColor="red";
+    }else{
+        cajaFecha.style.borderColor = "green";
+    }
+} 
+
+var cajaDescp = document.getElementById("descp");
+cajaDescp.oninput = () => {
+    var valor = cajaDescp.value;
+    if(valor == "" || valor == null){
+        cajaDescp.style.borderColor="red";
+    }else{
+        cajaDescp.style.borderColor = "green";
+    }
+}
+
+var cajaCant = document.getElementById("cant");
+cajaCant.oninput = () => {
+    var valor = cajaCant.value;
+    if(valor == "" || valor == null){
+        cajaCant.style.borderColor="red";
+    }else{
+        cajaCant.style.borderColor = "green";
+    }
+}  

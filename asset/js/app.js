@@ -29,6 +29,9 @@ navSlide();
 var cont =1;
 var bitacoras=[]
 var formulario= document.getElementById("bitacora")
+var cajaFecha = document.getElementById("fecha");
+var cajaDescp = document.getElementById("descp");
+var cajaCant = document.getElementById("cant");
 
 formulario.addEventListener("submit",(evt)=>{
     evt.preventDefault();
@@ -42,6 +45,31 @@ formulario.addEventListener("submit",(evt)=>{
         bitacoras.push(bitacora);
         cont++;
         mostrar();
+        cajaFecha.style.borderColor="green";
+        cajaDescp.style.borderColor="green";
+        cajaCant.style.borderColor = "green";
+    }
+    else{
+        if(bitacora.fecha!=""&&bitacora.fecha!=null){
+            cajaFecha.style.borderColor="green";
+        }
+        else{
+            cajaFecha.style.borderColor="red";
+        }
+
+        if(bitacora.descripcion!=""&&bitacora.descripcion!=null){
+            cajaDescp.style.borderColor="green";
+        }
+        else{
+            cajaDescp.style.borderColor="red";
+        }
+
+        if(bitacora.cantidad!=""&&bitacora.cantidad!=null){
+            cajaCant.style.borderColor="green";
+        }
+        else{
+            cajaCant.style.borderColor="red";
+        }       
     }
 });
 
@@ -84,34 +112,3 @@ const mostrar=()=>{
     });
     agregar();
 }
-
-
-var cajaFecha = document.getElementById("fecha");
-cajaFecha.oninput = () => {
-    var valor = cajaFecha.value;
-    if(valor == "" || valor == null){
-        cajaFecha.style.borderColor="red";
-    }else{
-        cajaFecha.style.borderColor = "green";
-    }
-} 
-
-var cajaDescp = document.getElementById("descp");
-cajaDescp.oninput = () => {
-    var valor = cajaDescp.value;
-    if(valor == "" || valor == null){
-        cajaDescp.style.borderColor="red";
-    }else{
-        cajaDescp.style.borderColor = "green";
-    }
-}
-
-var cajaCant = document.getElementById("cant");
-cajaCant.oninput = () => {
-    var valor = cajaCant.value;
-    if(valor == "" || valor == null){
-        cajaCant.style.borderColor="red";
-    }else{
-        cajaCant.style.borderColor = "green";
-    }
-}  
